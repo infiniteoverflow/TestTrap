@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Redirector</title>
+    <style>
+        #buttonContainer {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Enter Success and Failure URLs</h1>
+    <form id="urlForm">
+        <label for="successUrl">Success URL:</label>
+        <input type="text" id="successUrl" name="successUrl" required>
+        <br><br>
+        <label for="failureUrl">Failure URL:</label>
+        <input type="text" id="failureUrl" name="failureUrl" required>
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="buttonContainer">
+        <button id="successButton">Go to Success URL</button>
+        <button id="failureButton">Go to Failure URL</button>
+    </div>
+
+    <script>
+        document.getElementById('urlForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const successUrl = document.getElementById('successUrl').value;
+            const failureUrl = document.getElementById('failureUrl').value;
+
+            document.getElementById('successButton').onclick = function () {
+                window.location.href = successUrl;
+            };
+
+            document.getElementById('failureButton').onclick = function () {
+                window.location.href = failureUrl;
+            };
+
+            document.getElementById('buttonContainer').style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>
